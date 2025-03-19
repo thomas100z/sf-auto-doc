@@ -55,11 +55,11 @@ def main(objects: str, output_dir: str, base_path: str, debug: bool = False) -> 
 
     # Process each object from the list
     for obj in objects_list:
-        documentation = generate_documentation(obj, base_path, debug)
-        if documentation:
-            save_documentation(documentation, obj, output_dir, debug)
+        fields_documentation, validation_rules_documentation = generate_documentation(obj, base_path, debug)
+        if fields_documentation or validation_rules_documentation:
+            save_documentation(fields_documentation, validation_rules_documentation, obj, output_dir, debug)
         elif debug:
-            print(f"No fields found for object '{obj}'. Skipping Markdown generation.")
+            print(f"No fields or validation rules found for object '{obj}'. Skipping Markdown generation.")
 
 
 if __name__ == "__main__":

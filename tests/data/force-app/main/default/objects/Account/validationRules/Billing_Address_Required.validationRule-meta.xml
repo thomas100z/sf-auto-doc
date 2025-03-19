@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Address_Required</fullName>
+    <active>false</active>
+    <errorConditionFormula>OR(
+ISBLANK(BillingStreet),
+ISBLANK(BillingCity)
+)</errorConditionFormula>
+    <errorMessage>Please fill in the Billing Street and Billing City.</errorMessage>
+</ValidationRule>

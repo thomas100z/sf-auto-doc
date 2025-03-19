@@ -18,8 +18,14 @@ class TestDocumentation(unittest.TestCase):
         with open(output_file, 'r') as f:
             content = f.read()
 
-        self.assertIn('| Label | API Name | Type |', content, "Table header is missing.")
-        self.assertIn('AccountNumber', content, "Table data is missing.")
+        # Check fields table
+        self.assertIn('| Label | API Name | Type |', content, "Fields table header is missing.")
+        self.assertIn('AccountNumber', content, "Fields table data is missing.")
+
+        # Check validation rules table
+        self.assertIn('| Name | Description | Formula |', content, "Validation rules table header is missing.")
+        self.assertIn('dot_in_website', content, "Active validation rule is missing.")
+        self.assertNotIn('Billing_Address_Required', content, "Inactive validation rule should not be included.")
 
         # clean up the created documentation file
         os.remove(output_file)
@@ -45,8 +51,14 @@ class TestDocumentation(unittest.TestCase):
         with open(output_file, 'r') as f:
             content = f.read()
 
-        self.assertIn('| Label | API Name | Type |', content, "Table header is missing in Account documentation.")
-        self.assertIn('AccountNumber', content, "Table data is missing in Account documentation.")
+        # Check fields table
+        self.assertIn('| Label | API Name | Type |', content, "Fields table header is missing in Account documentation.")
+        self.assertIn('AccountNumber', content, "Fields table data is missing in Account documentation.")
+
+        # Check validation rules table
+        self.assertIn('| Name | Description | Formula |', content, "Validation rules table header is missing in Account documentation.")
+        self.assertIn('dot_in_website', content, "Active validation rule is missing in Account documentation.")
+        self.assertNotIn('Billing_Address_Required', content, "Inactive validation rule should not be included in Account documentation.")
 
         # clean up the created documentation file
         os.remove(output_file)
