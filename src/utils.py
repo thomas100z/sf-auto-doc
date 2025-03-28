@@ -77,8 +77,12 @@ def generate_documentation(object_name: str, base_path: str, debug: bool = False
 def save_documentation(fields_documentation: List[Tuple[str, str, str]], validation_rules_documentation: List[Tuple[str, str, str]], object_name: str, output_dir: str, debug: bool = False) -> None:
     if debug:
         print(f"Saving documentation for: {object_name} in {output_dir}")
-    ensure_directory_exists(output_dir)
-    output_file = os.path.join(output_dir, f'{object_name}.md')
+    
+    # Create Objects subdirectory
+    objects_dir = os.path.join(output_dir, 'Objects')
+    ensure_directory_exists(objects_dir)
+    
+    output_file = os.path.join(objects_dir, f'{object_name}.md')
     with open(output_file, 'w') as f:
         f.write(f'# {object_name} Documentation\n\n')
         
