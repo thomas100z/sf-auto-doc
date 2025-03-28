@@ -78,8 +78,8 @@ def save_documentation(fields_documentation: List[Tuple[str, str, str]], validat
     if debug:
         print(f"Saving documentation for: {object_name} in {output_dir}")
     
-    # Create Objects subdirectory
-    objects_dir = os.path.join(output_dir, 'Objects')
+    # Create objects subdirectory
+    objects_dir = os.path.join(output_dir, 'objects')
     ensure_directory_exists(objects_dir)
     
     output_file = os.path.join(objects_dir, f'{object_name}.md')

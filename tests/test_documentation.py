@@ -23,7 +23,7 @@ class TestDocumentation(unittest.TestCase):
 
     def test_documentation_creation(self):
         base_path = os.path.join(self.test_data_dir, 'force-app/main/default/')
-        output_file = os.path.join(self.output_dir, 'Objects', 'Account.md')
+        output_file = os.path.join(self.output_dir, 'objects', 'Account.md')
 
         main('Account', self.output_dir, base_path, debug=True)
 
@@ -44,7 +44,7 @@ class TestDocumentation(unittest.TestCase):
 
     def test_all_objects_documentation_creation(self):
         base_path = os.path.join(self.test_data_dir, 'force-app/main/default/')
-        output_file = os.path.join(self.output_dir, 'Objects', 'Account.md')
+        output_file = os.path.join(self.output_dir, 'objects', 'Account.md')
 
         # Invoke main with 'all' to process all objects
         main('all', self.output_dir, base_path, debug=True)
